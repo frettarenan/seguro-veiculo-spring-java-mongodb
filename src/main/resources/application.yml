@@ -6,8 +6,4 @@ spring:
     name: seguro-veiculo
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: seguro-veiculo
-      username: renanfretta
-      password: Ren@nFretta1986
+      uri: mongodb://renanfretta:Ren%40nFretta1986@127.0.0.1:27017/seguro-veiculo?authSource=admin
