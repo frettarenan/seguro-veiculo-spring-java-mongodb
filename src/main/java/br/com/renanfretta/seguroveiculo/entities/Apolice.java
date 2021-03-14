@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Apolice implements Serializable {
 	private Long numero;
 	
 	@NotNull
+	@DBRef
 	private Cliente cliente;
 	
 	@NotNull

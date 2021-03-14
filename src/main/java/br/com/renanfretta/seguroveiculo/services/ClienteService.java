@@ -3,8 +3,6 @@ package br.com.renanfretta.seguroveiculo.services;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +57,7 @@ public class ClienteService {
 		return dto;
 	}
 
-	public ClienteOutputDTO editarInfomacoesPreenchidas(Long id, @Valid ClienteInputDTO clienteInputDTO) {
+	public ClienteOutputDTO editarInfomacoesPreenchidas(Long id, ClienteInputDTO clienteInputDTO) {
 		Cliente cliente = repository.findById(id).orElseThrow(() -> new NoSuchElementException(messagesProperty.getMessage(MessagesPropertyEnum.ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_CLIENTE)));
 		
 		if (clienteInputDTO.getNome() != null)
