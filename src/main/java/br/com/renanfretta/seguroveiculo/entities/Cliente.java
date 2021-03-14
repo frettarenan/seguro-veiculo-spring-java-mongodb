@@ -25,7 +25,7 @@ public class Cliente implements Serializable {
 	private String nome;
 	
 	@NotNull
-	@Indexed(unique=true)
+	@Indexed(name = "unique_cpf_cliente", unique=true)
 	@CPF
 	private String cpf;
 	

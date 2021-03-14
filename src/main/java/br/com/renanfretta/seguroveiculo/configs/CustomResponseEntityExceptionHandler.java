@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.mongodb.MongoWriteException;
+
 import br.com.renanfretta.seguroveiculo.exceptions.ErroTratadoRestException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +41,14 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 	
 	@ExceptionHandler({ ConstraintViolationException.class })
 	public ResponseEntity<Object> handleMethodArgumentTypeMismatch(ConstraintViolationException ex, WebRequest request) {
+		String mensagemUsuario = ex.getMessage();
+		String mensagemDesenvolvedor = ex.getCause() != null ? ex.getCause().toString() : ex.toString();
+		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY, request);
+	}
+	
+	@ExceptionHandler({ MongoWriteException.class })
+	public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MongoWriteException ex, WebRequest request) {
 		String mensagemUsuario = ex.getMessage();
 		String mensagemDesenvolvedor = ex.getCause() != null ? ex.getCause().toString() : ex.toString();
 		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));
