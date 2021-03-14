@@ -3,10 +3,10 @@ package br.com.renanfretta.seguroveiculo.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.mongodb.lang.NonNull;
 
 import lombok.Data;
 
@@ -17,22 +17,22 @@ public class Apolice implements Serializable {
 	private static final long serialVersionUID = 6577231332327703638L;
 
 	@Id
-	@NonNull
+	@NotNull
 	private Long id;
 	
-	@NonNull
+	@NotNull
 	private Long numero;
 	
-	@NonNull
+	@NotNull
 	private Cliente cliente;
 	
-	@NonNull
+	@NotNull
 	private Date vigenciaInicio;
 	
-	@NonNull
+	@NotNull
 	private Date vigenciaFim;
 	
-	@NonNull
+	@NotNull
 	private String placaVeiculo;
 	
 	private Double valor;

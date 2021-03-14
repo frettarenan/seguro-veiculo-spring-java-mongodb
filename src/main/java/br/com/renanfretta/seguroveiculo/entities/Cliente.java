@@ -2,11 +2,11 @@ package br.com.renanfretta.seguroveiculo.entities;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.mongodb.lang.NonNull;
 
 import lombok.Data;
 
@@ -17,20 +17,20 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = -7785268935833421151L;
 
 	@Id
-	@NonNull
+	@NotNull
 	private Long id;
 	
-	@NonNull
+	@NotNull
 	private String nome;
 	
-	@NonNull
+	@NotNull
 	@Indexed(unique=true)
 	private String cpf;
 	
-	@NonNull
+	@NotNull
 	private String uf;
 	
-	@NonNull
+	@NotNull
 	private String cidade;
 	
 }
